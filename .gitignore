@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/getr
+getr.so
+getr.dylib
+getr.dll
+getr.a
+getr.lib
+getr-test-*
+*.exe
+*.o
+*.obj
+*.lst

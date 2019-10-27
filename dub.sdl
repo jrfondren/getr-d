@@ -1,0 +1,5 @@
+name "getr"
+description "A benchmarking wrapper around getrusage."
+authors "Julian Fondren"
+copyright "Copyright © 2019, Julian Fondren"
+license "MIT"
