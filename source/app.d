@@ -50,6 +50,8 @@
 
 module getr;
 
+private:
+
 extern (C) int getrusage(int who, RUsage* usage);
 
 enum RUSAGE_CHILDREN = -1;
@@ -84,10 +86,10 @@ void report(int times) {
     RUsage usage = void;
 
     getrusage(RUSAGE_CHILDREN, &usage);
-    auto seconds = usage.ru_utime.tv_sec + usage.ru_stime.tv_sec;
-    auto microseconds = usage.ru_utime.tv_usec + usage.ru_stime.tv_usec;
-    auto milliseconds = seconds * 1000 + microseconds / 1000;
-    auto ms_per = cast(double) milliseconds / cast(double) times;
+    immutable long seconds = usage.ru_utime.tv_sec + usage.ru_stime.tv_sec,
+        microseconds = usage.ru_utime.tv_usec + usage.ru_stime.tv_usec,
+        milliseconds = seconds * 1000 + microseconds / 1000;
+    immutable double ms_per = cast(double) milliseconds / cast(double) times;
 
     stderr.writef!q"REPORT
 User time      : %d s, %d us
