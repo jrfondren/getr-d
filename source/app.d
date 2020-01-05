@@ -80,7 +80,7 @@ struct RUsage {
     long ru_nivcsw;
 }
 
-void report(int times) {
+void report(int times) @trusted {
     import std.stdio : stderr;
 
     RUsage usage = void;
@@ -126,7 +126,7 @@ void main(string[] args) {
     import std.conv : to;
     import std.process : spawnProcess, wait;
 
-    void usage() {
+    void usage() @trusted {
         stderr.writeln("usage: ", args[0], " <#runs> <command> [<args> ...]");
         exit(1);
     }
